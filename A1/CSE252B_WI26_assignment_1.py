@@ -266,7 +266,17 @@ def forstner_corner_detector(Ix, Iy, w, t, w_nms):
         Ix_w = Ix[j-r:j+r+1, i-r:i+r+1, :]
         Iy_w = Iy[j-r:j+r+1, i-r:i+r+1, :]
 
-        X, Y = np.meshgrid(np.arange(i-r, i+r+1), np.arange(j-r, j+r+1))
+        X = []
+        Y = []
+
+        for x_coord in range(i - r, i + r + 1):
+            X.append(x_coord)
+
+        for y_coord in range(j-r, j+r+1):
+            Y.append(y_coord)
+
+        X = np.array(X)[None,:]
+        Y = np.array(Y)[:,None]
 
         Rxx = Ix_w[:,:,0] ** 2
         Gxx = Ix_w[:,:,1] ** 2
