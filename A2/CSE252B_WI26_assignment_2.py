@@ -421,7 +421,7 @@ def parameterize_homog(v_bar):
     v = 2 / (sinc(np.arccos(a))) * b
 
     norm = np.linalg.norm(v)
-    v = (1 - (2 * np.pi / norm) * np.ceil((norm - np.pi) / 2 * np.pi)) * v
+    v = (1 - (2 * np.pi / norm) * np.ceil((norm - np.pi) / (2 * np.pi))) * v
 
     return v
 
@@ -518,7 +518,7 @@ def compute_cost(P, x, X, covarx):
     epsilon = (x - x_h).reshape(-1,1)
     sigma_i = np.linalg.inv(covarx)
     
-    cost = epsilon.T @ np.linalg.solve(covarx, epsilon)
+    cost = epsilon.T @ sigma_i @ epsilon
     cost = cost[0,0]
 
     return cost
