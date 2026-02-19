@@ -213,8 +213,10 @@ def determine_inliers(x, X, K, thresh, tol, p):
 
         #coefficients, roots, and lambda naught
         G = c_2 * (c_2 * sin2_beta - b_2 * sin2_gamma)
-        H = b_2 * (b_2 - a_2) * sin2_gamma + c_2 * (c_2 + 2 * a_2) * sin2_beta + 2 * b_2 * c_2 * (-1 + cos_alpha * cos_beta * cos_gamma)
-        I = b_2 * (b_2 - c_2) * sin2_alpha + a_2 * (a_2 + 2 * c_2) * sin2_beta + 2 * a_2 * b_2 * (-1 + cos_alpha * cos_beta * cos_gamma)
+        H = b_2 * (b_2 - a_2) * sin2_gamma + c_2 * (c_2 + 2 * a_2) * sin2_beta \
+            + 2 * b_2 * c_2 * (-1 + cos_alpha * cos_beta * cos_gamma)
+        I = b_2 * (b_2 - c_2) * sin2_alpha + a_2 * (a_2 + 2 * c_2) * sin2_beta \
+            + 2 * a_2 * b_2 * (-1 + cos_alpha * cos_beta * cos_gamma)
         J = a_2 * (a_2 * sin2_beta - b_2 * sin2_alpha)
         roots = np.roots((G, H, I, J))
         real_roots = roots[np.isreal(roots)]
